@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 //        glue = {"src/test/java/StepDefiniation", "src/test/java/utility"},
 //        plugin = {"pretty","html:target/cucumber-html-report","json:cucumber.json"}
         features = "D:/MyMavenProject/InCubyteAssignment/src/test/java/features",
-        glue = "StepDefination.SignUpLoginSteps",
+        glue = "StepDefination",
         plugin = {"pretty", "html:target/cucumber-reports"}
        // monochrome = true
 )

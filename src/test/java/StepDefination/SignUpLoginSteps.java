@@ -3,6 +3,7 @@ package StepDefination;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
@@ -34,7 +35,7 @@ public class SignUpLoginSteps {
         TestData.randomFirstName = "John" + UUID.randomUUID().toString().substring(0, 5);
         TestData.randomLastName = "Doe" + UUID.randomUUID().toString().substring(0, 5);
         TestData.randomEmail = "user" + UUID.randomUUID().toString().substring(0, 5) + "@example.com";
-        TestData.randomPassword = "Password" + UUID.randomUUID().toString().substring(0, 3);
+        TestData.randomPassword = "Password@" + UUID.randomUUID().toString().substring(0, 5);
 
         homePage.clickCreateAccount();
         signUpPage.enterFirstName(TestData.randomFirstName);
@@ -43,8 +44,11 @@ public class SignUpLoginSteps {
         signUpPage.enterPassword(TestData.randomPassword);
         signUpPage.enterConfirmPassword(TestData.randomPassword);
 
+       String ExpectedText = "Create New Customer Account";
+       System.out.println(signUpPage.createNewCustomerAccountMsgGetText());
+        Assert.assertEquals(signUpPage.createNewCustomerAccountMsgGetText(),ExpectedText);
         accountPage = signUpPage.clickCreateAccount();
-        accountPage.clickOnSignoutButton().clickOnSignInOption();
+      accountPage.clickOnSignoutButton().clickOnSignInOption();
     }
 
     @Then("I should be able to login with the same credentials")
@@ -54,7 +58,11 @@ public class SignUpLoginSteps {
         loginPage.enterPassword(TestData.randomPassword);
         loginPage.clickSignIn();
 
-        // Additional assertions can be added here to verify successful login
+       //String expectedEmail =  TestData.randomEmail;
+        String expectedEmail = "dilpreet123@gmail.com";
+
+       Assert.assertTrue(accountPage.contactInformationGetText().contains(expectedEmail));
+        accountPage.closeBrowser();
     }
 
 

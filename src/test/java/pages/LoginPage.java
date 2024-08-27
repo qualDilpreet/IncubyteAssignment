@@ -11,6 +11,7 @@ public class LoginPage {
     By password = By.id("pass");
     By signIn = By.name("send");
 
+
     // Constructor
     public LoginPage (WebDriver driver) {
         this.driver = driver;
@@ -28,4 +29,8 @@ public class LoginPage {
     public void clickSignIn(){
         driver.findElement(signIn).click();
     }
+
+//    public String registeredUserEmailId(){
+//        return
+//    }
 }

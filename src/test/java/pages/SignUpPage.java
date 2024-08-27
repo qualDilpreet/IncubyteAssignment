@@ -13,6 +13,7 @@ public class SignUpPage {
     By password = By.id("password");
     By confirmPassword = By.name("password_confirmation");
     By createAccountButton = By.cssSelector("button[title='Create an Account']");
+By createNewCustomerAccountMsg = By.xpath("//span[text()='Create New Customer Account']");
 
     public SignUpPage(WebDriver driver) {
         this.driver = driver;
@@ -36,6 +37,11 @@ public class SignUpPage {
 
     public void enterConfirmPassword(String confirmPwd) {
         driver.findElement(confirmPassword).sendKeys(confirmPwd);
+    }
+
+    public String createNewCustomerAccountMsgGetText(){
+     String text  = driver.findElement(createNewCustomerAccountMsg).getText();
+     return text;
     }
 
     public AccountPage clickCreateAccount() {
