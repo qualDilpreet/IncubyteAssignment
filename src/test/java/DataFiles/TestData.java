@@ -1,4 +1,4 @@
-package pages;
+package DataFiles;
 
 public class TestData {
     public static String randomFirstName;

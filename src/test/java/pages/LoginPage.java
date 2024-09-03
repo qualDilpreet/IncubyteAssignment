@@ -1,9 +1,10 @@
 package pages;
 
+import DataFiles.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
     WebDriver driver ;
 
@@ -11,26 +12,28 @@ public class LoginPage {
     By password = By.id("pass");
     By signIn = By.name("send");
 
-
-    // Constructor
     public LoginPage (WebDriver driver) {
+        super(driver);
         this.driver = driver;
     }
 
-    // Method to click the second edit icon
     public void enterEmail(String email) {
-        driver.findElement(emailAddress).sendKeys(email);
+        sendKeys(emailAddress, email,"Email Address");
     }
 
     public void enterPassword(String pass) {
-        driver.findElement(password).sendKeys(pass);
+        sendKeys(password, pass,"Password");
     }
 
     public void clickSignIn(){
-        driver.findElement(signIn).click();
+        click(signIn, "SignIn Option");
     }
 
-//    public String registeredUserEmailId(){
-//        return
-//    }
+    public AccountPage login(String email, String pass) {
+        sendKeys(emailAddress,email, "Email Address");
+        sendKeys(password,pass,"Password");
+        click(signIn, "SignIn");
+       return new AccountPage (driver);
+    }
+
 }
