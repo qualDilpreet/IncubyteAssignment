@@ -30,9 +30,7 @@ public class SignUpLoginStepsNew {
         homePage = new HomePage(driver);
         driver.manage().window().maximize();
         driver.get(Constants.URL);
-
     }
-
 
     @Given("I am on the registration page")
     public void i_am_on_the_registration_page() {
@@ -74,7 +72,6 @@ public class SignUpLoginStepsNew {
     @When("I log out")
     public void i_log_out() {
         homePage = myaccount.clickOnSignoutButton();
-
     }
 
     @Given("I am on the login page")
@@ -98,6 +95,12 @@ public class SignUpLoginStepsNew {
     @Then("I should see the message {string}")
     public void i_should_see_the_message(String expectedMessage) {
         String actualMessage = myaccount.getWelcomeMessage();
+        Assert.assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Then("I should see the login failed message {string}")
+    public void i_should_see_the_login_failed_message(String expectedMessage) {
+        String actualMessage = loginPage.loginFailedMessage();
         Assert.assertEquals(expectedMessage, actualMessage);
     }
 

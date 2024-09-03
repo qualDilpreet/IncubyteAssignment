@@ -11,10 +11,15 @@ public class LoginPage extends BasePage {
     By emailAddress = By.id("email");
     By password = By.id("pass");
     By signIn = By.name("send");
+    By loginFailedMessaged = By.xpath("//div[@data-ui-id='message-error']/div");
 
     public LoginPage (WebDriver driver) {
         super(driver);
         this.driver = driver;
+    }
+
+    public String loginFailedMessage () {
+    return getText(loginFailedMessaged, "Login Failed Messaged!");
     }
 
     public void enterEmail(String email) {

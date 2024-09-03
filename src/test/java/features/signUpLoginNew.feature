@@ -21,3 +21,10 @@ Feature: User Registration and Login
       | email               | john.denis123@example.com|
       | password            | Password@123 |
     Then I should see the message "Welcome, john denis!"
+
+  Scenario: User logs in with Invalid credentials
+    Given I am on the login page
+    When I login with the following details:
+      | email               | john.denis1234@example.com|
+      | password            | Password@123 |
+    Then I should see the login failed message "The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later."
